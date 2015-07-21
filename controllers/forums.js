@@ -5,78 +5,94 @@ module.exports.controller = function (app) {
 //main route
 	app.get('/', function (req, res) {
 		Forum.displayForums(function(forums){
-			res.render('home', forums);
+			var data = {
+				forums: forums
+			};
+			res.render('home', data);
 		});
 	});
-
 
 //Index route
-	app.get('/biology', function (req, res) {
-		Forum.displayPosts(1, function (posts) {
-			res.render('biology', posts);
+	app.get('/forum/:id', function (req, res) {
+		Forum.displayPosts(req.params.id, function (posts) {
+			res.render('forum', posts);
 		});
 	});
 
-	app.get('/chemistry', function (req, res) {
-		Forum.displayPosts(2, function (posts) {
-			res.render('chemistry', posts);
-		});
-	});	
-
-	app.get('/physics', function (req, res) {
-		Forum.displayPosts(3, function (posts) {
-			res.render('physics', posts);
-		});
-	});	
-
 //New route
-	app.get('/biology/new', function (req, res) {
-		res.render('createBioPost');
+	app.get('/forum/:id/new', function (req, res) {
+		var data = {
+			forums: req.params.id
+		};
+		res.render('create_post', data);
+	});
+
+	app.get('/forum/post/comment/:id/new', function (req, res) {
+		var data = {
+			post: req.params.id
+		};
+		res.render('create_comment', data);
 	});
 
 //Create route
 
-	app.post('/biology', function (req, res) {
-		Forum.createBioPost(req.body)
-			res.redirect('/biology')
+	app.post('/forum/:id', function (req, res) {
+		Forum.createPost(req.body)
+			res.redirect('/forum/' + req.params.id);
+	});
+
+	app.post('/forum/post/comment/:id', function (req, res) {
+		Forum.createComment(req.body)
+			res.redirect('/forum/post/' + req.params.id);
 	});
 
 //Show route
-	app.get('/biology/:id', function (req, res) {
-		Forum.displayComments(req.params.id, function(info) {
-			res.render('biocomments', info);
+	app.get('/forum/post/:id', function (req, res) {
+		Forum.displayComments(req.params.id, function (info) {
+			res.render('comments', info);
 		});
 	});
 
-	app.get('/chemistry/:id', function (req, res) {
-		Forum.displayComments(req.params.id, function(info) {
-			res.render('chemcomments', info);
-		});		
+//Edit route
+
+	app.get('/forum/post/edit/:id', function (req, res) {
+		Forum.displayComments(req.params.id, function (info) {
+			res.render('edit_post', info.post);		
+		});
 	});
 
-	app.get('/physics/:id', function (req, res) {
-		Forum.displayComments(req.params.id, function(info) {
-			res.render('physcomments', info);
-		});		
-	});	
+	app.get('/forum/post/comment/edit/:id', function (req, res) {
+		Forum.commentInfo(req.params.id, function (info) {
+			res.render('edit_comment', info.comment);
+		});
+	});
 
+//Update route
 
-// //Edit route
+	app.put('/forum/post/edit/:id', function (req, res) {
+		Forum.editPost(req.body, req.params.id, function () {
+			res.redirect('/forum/post/' + req.params.id);
+		});
+	});
 
-	// app.get('', function (req, res) {
-		
-	// });
+	app.put('/forum/post/comment/edit/:id', function (req, res) {
+		Forum.editComment(req.body, req.params.id, function (info) {
+			res.redirect('/forum/post/' + info.post_id);
+		});
+	});
 
-// //Update route
+//Delete route
 
-	// app.put('', function (req, res) {
-		
-	// });
+	app.delete('/forum/post/delete/:id', function (req, res) {
+		Forum.deletePost(req.params.id, function (info) {
+			res.redirect('/forum/' + info.forum_id);
+		});
+	});
 
-// //Delete route
-
-	// app.delete('', function (req, res) {
-		
-	// });
+	app.delete('/forum/post/comment/delete/:id', function (req, res) {
+		Forum.deleteComment(req.params.id, function (info) {
+			res.redirect('/forum/post/' + info.post_id);
+		});
+	});
 }
 

@@ -1,0 +1,32 @@
+	{{post.topic}}<br>
+	{{post.content}}<br>
+
+	<a href="/forum/post/edit/{{post.id}}">edit post</a>
+
+	<form action="/forum/post/delete/{{post.id}}" method="POST">
+		<input type="hidden" name="_method" value="DELETE">
+		<input type="submit" value="delete post">
+	</form>
+
+<br><br>
+
+<a href="/forum/post/comment/{{post.id}}/new">new comment</a><br>
+
+{{#each comment}}
+
+	{{vote}} | {{content}} | {{location}} <br>
+
+	<a href="/forum/post/comment/edit/{{id}}">edit comment</a>
+
+	<form action="/forum/post/comment/delete/{{id}}" method="POST">
+		<input type="hidden" name="_method" value="DELETE">
+		<input type="submit" value="delete comment">
+	</form>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js">
+	$.get("http://ipinfo.io", function(response) {
+    console.log(response.ip, response.country);
+	}, "jsonp");
+	</script>
+	<br><br>
+
+{{/each}}

@@ -1,0 +1,12 @@
+body {
+	background-color: cornflowerblue;
+	font-family: 'Ubuntu';
+}
+
+#logo {
+	background-image: url("../images/cclogo.png");
+	background-repeat: no-repeat;
+	width: 240px;
+	height: 120px;
+	padding: 10px;
+}

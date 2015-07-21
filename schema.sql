@@ -45,5 +45,5 @@ CREATE TABLE comments (
 	content TEXT,
 	vote INTEGER,
 	location VARCHAR(255),
-	post_id INTEGER REFERENCES posts
+	post_id INTEGER REFERENCES posts ON DELETE CASCADE
 );

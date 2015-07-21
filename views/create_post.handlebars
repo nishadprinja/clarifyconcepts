@@ -1,10 +1,15 @@
-<form action="/biology" method="POST">
-	<input type="hidden" name="forum_id" value="1">
+<form action="/forum/{{forums}}" method="POST">
+
+	<input type="hidden" name="forum_id" value="{{forums}}">
+
 	<label for="topic">
 		<input type="text" name="topic" placeholder="enter topic">
 	</label>
+
 	<label for="content">
 		<input type="text" name="content">
 	</label>
+	
 	<input type="submit" value="SUBMIT">
+	
 </form>
