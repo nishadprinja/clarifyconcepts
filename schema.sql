@@ -8,8 +8,10 @@ CREATE TABLE users (
 	id SERIAL PRIMARY KEY,
 	username VARCHAR(255),
 	password VARCHAR(255),
-	home_location VARCHAR(255),
-	profile_img TEXT
+	profile_img TEXT,
+	city VARCHAR(255),
+	region VARCHAR(255),
+	country VARCHAR(255)
 );
 
 CREATE TABLE field (
@@ -35,7 +37,6 @@ CREATE TABLE posts (
 	content TEXT,
 	vote INTEGER,
 	num_comments INTEGER,
-	location VARCHAR(255),
 	forum_id INTEGER REFERENCES forums
 );
 
@@ -44,6 +45,5 @@ CREATE TABLE comments (
 	user_id INTEGER REFERENCES users,
 	content TEXT,
 	vote INTEGER,
-	location VARCHAR(255),
 	post_id INTEGER REFERENCES posts ON DELETE CASCADE
 );

@@ -3,7 +3,6 @@ var db = require('./db.js');
 //making users
 var usernames = ['Charmander', 'Charmeleon', 'Charizard', 'Mew', 'Lapras', 'Bulbasaur']
 var passwords = ['ember', 'flamethrower', 'fireblast', 'swift', 'surf', 'vinewhip']
-var home = ['Pallet Town', 'Cerulean City', 'Cinnabar Island', 'Viridian City', 'Saffron City', 'Viridian Forest']
 var profilePic = ['http://cdn.bulbagarden.net/upload/thumb/7/73/004Charmander.png/250px-004Charmander.png', 
 'http://cdn.bulbagarden.net/upload/thumb/4/4a/005Charmeleon.png/250px-005Charmeleon.png',
 'http://img.pokemondb.net/artwork/charizard.jpg', 
@@ -22,42 +21,36 @@ var summary = ['I went to Cornell for Biology', 'I studied at Cambridge for Chem
 var charmander = {
 	username: usernames[0],
 	password: passwords[0],
-	home_location: home[0],
 	profile_img: profilePic[0]
 };
 
 var charmeleon = {
 	username: usernames[1],
 	password: passwords[1],
-	home_location: home[1],
 	profile_img: profilePic[1]
 };
 
 var charizard = {
 	username: usernames[2],
 	password: passwords[2],
-	home_location: home[2],
 	profile_img: profilePic[2]
 };
 
 var mew = {
 	username: usernames[3],
 	password: passwords[3],
-	home_location: home[3],
 	profile_img: profilePic[3]
 };
 
 var lapras = {
 	username: usernames[4],
 	password: passwords[4],
-	home_location: home[4],
 	profile_img: profilePic[4]
 };
 
 var bulbasaur = {
 	username: usernames[5],
 	password: passwords[5],
-	home_location: home[5],
 	profile_img: profilePic[5]
 };
 
@@ -166,11 +159,9 @@ var topic = ['Invertebrate Mating Patterns', 'Molecular Collision Experiments', 
 var content = ['Invertebrates were found to mate most during spring, according to reports at National Geographic', 'Molecular collision experiments reveal why new compounds can have a new color when formed', 'Shooting rockets at these trajectories experimentally allowed us to prove that our calculations were accurate. Check it out.']
 var vote = [10, 12, 7]
 var comments = [2, 1, 3]
-var location = ['Panama', 'New York', 'California']
 
 var com_content = ['sweet, nice share dude!', 'I never knew that about invertebrates, 23 years as a biologist and counting!', 'whoa, no way', 'dude, this is boring', 'guy above me is a troll', 'I never knew you could test physics like this, nice!']
 var com_vote = [0, 3, 0, -3, 4, 1]
-var com_location = ['Geneva, Switzerland', 'Stockholm, Sweden', 'San Francisco, CA', 'Detroit, MI', 'New York, NY', 'Janesville, WI']
 
 var bioForum = {
 	forum: forum[0],
@@ -193,7 +184,6 @@ var bioPost = {
 	content: content[0],
 	vote: vote[0],
 	num_comments: comments[0],
-	location: location[0],
 	forum_id: null,
 };
 
@@ -203,7 +193,6 @@ var chemPost = {
 	content: content[1],
 	vote: vote[1],
 	num_comments: comments[1],
-	location: location[1],
 	forum_id: null,
 };
 
@@ -213,55 +202,48 @@ var physPost = {
 	content: content[2],
 	vote: vote[2],
 	num_comments: comments[2],
-	location: location[2],
 	forum_id: null,
 };
 
 var bioComment1 = {
-	user_id: 4,
+	user_id: null,
 	content: com_content[0],
 	vote: com_vote[0],
-	location: com_location[0],
 	post_id: null
 };
 
 var bioComment2 = {
-	user_id: 5,
+	user_id: null,
 	content: com_content[1],
 	vote: com_vote[1],
-	location: com_location[1],
 	post_id: null
 };
 
 var chemComment1 = {
-	user_id: 6,
+	user_id: null,
 	content: com_content[2],
 	vote: com_vote[2],
-	location: com_location[2],
 	post_id: null
 };
 
 var physComment1 = {
-	user_id: 6,
+	user_id: null,
 	content: com_content[3],
 	vote: com_vote[3],
-	location: com_location[3],
 	post_id: null
 };
 
 var physComment2 = {
-	user_id: 4,
+	user_id: null,
 	content: com_content[4],
 	vote: com_vote[4],
-	location: com_location[4],
 	post_id: null
 };
 
 var physComment3 = {
-	user_id: 5,
+	user_id: null,
 	content: com_content[5],
 	vote: com_vote[5],
-	location: com_location[5],
 	post_id: null
 };
 

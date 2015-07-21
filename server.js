@@ -1,19 +1,33 @@
 //the basics
-
 var express = require('express');
 var app = express();
 var logger = require('morgan');
+var path = require('path');
+var session = require('express-session');
+var exphbs = require('express-handlebars');
+var bodyParser = require('body-parser');
+var fs = require('fs');
 
-app.listen(1337);
+// app.listen(1337);
+
+app.set('port', (process.env.PORT || 3000));
+app.listen(app.get('port'), function () {
+	console.log('App running on port: ', app.get('port'));
+});
 
 app.use(logger('dev'));
 
 app.use(express.static('public'));
 
-//path and handlebars
+//setup session
 
-var path = require('path');
-var exphbs = require('express-handlebars');
+app.use(session({
+	secret: 'keyboard cat',
+	resave: false,
+	saveUninitialized: false
+}));
+
+//path and handlebars
 
 app.engine('handlebars', exphbs({extname:'handlebars', defaultLayout:'main.handlebars'}));
 
@@ -23,7 +37,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 //bodyparser
 
-var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -41,7 +54,6 @@ app.use(methodOverride(function (req, res) {
 }));
 
 //setup fs
-var fs = require('fs');
 
 fs.readdirSync('./controllers').forEach(function (file) {
 	if(file.substr(-3) == '.js') {
@@ -49,4 +61,3 @@ fs.readdirSync('./controllers').forEach(function (file) {
 		route.controller(app);
 	}
 });
-

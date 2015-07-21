@@ -7,17 +7,21 @@ module.exports.controller = function (app) {
 	
 	//SIGN UP FORM
 	app.get('/signup', function (req, res) {
-		res.render('newUser');
-	})
+		res.render('../views/signup-signin/new_user');
+	});
 	//SIGN UP POST
 	app.post('/signup', function (req, res) {
 		bcrypt.hash(req.body.password, 10, function (err, hash) {
 			var newUser = {
 				username: req.body.username,
-				home_location: req.body.home_location,
-				password: hash
+				password: hash,
+				profile_img: req.body.profile_img,
+				city: req.body.city,
+				region: req.body.region,
+				country: req.body.country
 			};
 			User.create(newUser, function (user) {
+				console.log(req.session)
 				req.session.currentUser = user.id;
 				res.redirect('/')
 			});
@@ -26,7 +30,7 @@ module.exports.controller = function (app) {
 
 	//LOGIN FORM
 	app.get('/login', function (req, res) {
-		res.render('login');
+		res.render('../views/signup-signin/login');
 	});
 	//LOGIN POST
 	app.post('/login', function (req, res) {
@@ -47,5 +51,6 @@ module.exports.controller = function (app) {
 		req.session.currentUser = null;
 		res.redirect('/')
 	});
+
 
 }

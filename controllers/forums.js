@@ -15,7 +15,7 @@ module.exports.controller = function (app) {
 //Index route
 	app.get('/forum/:id', function (req, res) {
 		Forum.displayPosts(req.params.id, function (posts) {
-			res.render('forum', posts);
+			res.render('../views/forum/forum', posts);
 		});
 	});
 
@@ -24,14 +24,14 @@ module.exports.controller = function (app) {
 		var data = {
 			forums: req.params.id
 		};
-		res.render('create_post', data);
+		res.render('../views/forum/create_post', data);
 	});
 
 	app.get('/forum/post/comment/:id/new', function (req, res) {
 		var data = {
 			post: req.params.id
 		};
-		res.render('create_comment', data);
+		res.render('../views/forum/create_comment', data);
 	});
 
 //Create route
@@ -49,7 +49,7 @@ module.exports.controller = function (app) {
 //Show route
 	app.get('/forum/post/:id', function (req, res) {
 		Forum.displayComments(req.params.id, function (info) {
-			res.render('comments', info);
+			res.render('../views/forum/comments', info);
 		});
 	});
 
@@ -57,13 +57,13 @@ module.exports.controller = function (app) {
 
 	app.get('/forum/post/edit/:id', function (req, res) {
 		Forum.displayComments(req.params.id, function (info) {
-			res.render('edit_post', info.post);		
+			res.render('../views/forum/edit_post', info.post);		
 		});
 	});
 
 	app.get('/forum/post/comment/edit/:id', function (req, res) {
 		Forum.commentInfo(req.params.id, function (info) {
-			res.render('edit_comment', info.comment);
+			res.render('../views/forum/edit_comment', info.comment);
 		});
 	});
 
