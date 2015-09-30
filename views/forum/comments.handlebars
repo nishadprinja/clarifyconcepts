@@ -1,27 +1,95 @@
-	{{post.topic}}<br>
-	{{post.content}}<br>
+<section class="container">
+  <nav class="vnav">
+    <ul class="vnav-menu">
+      <li>
+        <a href="/edu-zone" class="vnav-item">
+          Edu-Zone Tutorials
+        </a>
+      </li>
+      <li>
+        <a href="/forum" class="vnav-item">
+          Forum
+        </a>
+      </li>
+      <li>
+        <a href="/careers" class="vnav-item">
+          The Career Shop
+        </a>
+      </li>
+    </ul>
+  </nav>
+</section>
 
-	<a href="/forum/post/edit/{{post.id}}">edit post</a>
+<div id="comments-view">
+	
+	<h2><i>{{post.topic}}</i></h2>
 
-	<form action="/forum/post/delete/{{post.id}}" method="POST">
-		<input type="hidden" name="_method" value="DELETE">
-		<input type="submit" value="delete post">
-	</form>
+	<div id="post">
+		<div id="post-user">
+			<h4><center><u>{{user.username}}</u></center></h4><br>
+			
+			<img src="{{user.profile_img}}" width="200" height="200"><br><br>
+			
+			<span>
+				{{user.city}}, {{user.region}}, {{user.country}}
+			</span>
+		</div>
+		
+	<div id="post-content">	
+		{{post.content}}
+		
+		<div id="post-footer">
+			<span>
+				<a href="/forum/post/edit/{{post.id}}">edit</a>
+			</span> || 
 
-<br><br>
+			{{!-- 	Delete Button --}}
+			<form action="/forum/post/delete/{{post.id}}" method="POST">
+				<input type="hidden" name="_method" value="DELETE">
+				<input type="submit" value="delete">
+			</form><br><br>
+		</div>
+	</div>
+</div>
+	
+<div id="breaker">\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\</div><br><br>
+	
+	<div id="new-comment-button">
+		<span>
+			<a href="/forum/post/comment/{{post.id}}/new">New Comment</a>
+		</span>
+	</div><br>
 
-<a href="/forum/post/comment/{{post.id}}/new">new comment</a><br>
+	{{#each comment}}
 
-{{#each comment}}
+	<div class="comment">
+		<div class="comment-user">
+			<h4><center><u>{{username}}</u></center></h4><br>
 
-	{{vote}} | {{content}} | {{location}} <br>
+			<img src="{{profile_img}}" width="200" height="200"><br>
+			
+			<span>
+			{{city}}, {{region}}, {{country}}
+			</span>
+		</div>
 
-	<a href="/forum/post/comment/edit/{{id}}">edit comment</a>
+		<div class="comment-content">
+			{{content}} <br><br>
+			
+			<div class="comment-footer">
+				<span>
+				<a href="/forum/post/comment/edit/{{comment_id}}">edit</a>
+				</span> ||
 
-	<form action="/forum/post/comment/delete/{{id}}" method="POST">
-		<input type="hidden" name="_method" value="DELETE">
-		<input type="submit" value="delete comment">
-	</form>
-	<br><br>
+				{{!-- Delete Button --}}
+				<form action="/forum/post/comment/delete/{{comment_id}}" method="POST">
+					<input type="hidden" name="_method" value="DELETE">
+					<input type="submit" value="delete">
+				</form><br><br>
+			</div>
+		</div>
+	</div>
 
-{{/each}}
+	{{/each}}
+
+</div>

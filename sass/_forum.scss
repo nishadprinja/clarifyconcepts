@@ -1,0 +1,182 @@
+@import './shared/mixins';
+
+/* Forum Styling */
+
+$white: darken(white, 12%);
+
+#forums {
+	margin-left: 170px;
+	padding-left: 90px;
+	padding-top: 12px;
+}
+
+#posts {
+	@extend #forums;
+}
+
+@mixin border-box {
+	border: 1px solid darkblue;
+	background: rgba(lighten(darkblue, 40%), 0.6);
+}
+
+.subject {
+	@include border-box;
+	margin-right: 10px;
+	span {
+		display: block;
+		margin-left: 65px;
+		color: darken(cornflowerblue, 38%);
+		a {
+			color: darken(cornflowerblue, 45%);
+			text-decoration: underline none;
+		}
+	}
+}
+
+#new-post {
+	border: 1px solid darkblue;
+	width: 142px;
+	@include linear-gradient(top, saturate(lighten(cornflowerblue, 4%), 20%), darken(cornflowerblue, 15%));
+	span {
+		display: block;
+		margin: 5px;
+		a {
+			color: $white;
+			text-decoration: none;
+			padding-left: 2px;
+		}
+	}
+}
+
+#new-comment-button {
+	@extend #new-post;
+	width: 120px;
+}
+
+.post-box {
+	@include border-box;
+	margin-right: 10px;
+	span {
+		display: block;
+		margin: 10px;
+		a {
+			color: $white;
+			text-decoration: none;
+		}
+	}
+}
+
+.comment {
+	@include border-box;
+	position: relative;
+	padding: 10px;
+	width: 800px;
+	display: inline-block;
+	margin: 0 30px 30px 0;
+	h4 {
+		margin: 0;
+	}
+	form {
+		display: inline;
+	}
+}
+
+.comment-user {
+	float: left;
+	padding-right: 15px;
+	border-right: 1px solid black;
+	img {
+		padding-bottom: 10px;
+	}
+	span {
+		display: block;
+		font-size: 11px;
+		padding-left: 40px;
+	}
+}
+
+.comment-content {
+	display: inline-block;
+	margin: 20px 0 0 30px;
+	width: 550px;
+	word-wrap: break-word;
+}
+
+.comment-footer {
+	position: absolute;
+	bottom: 0;
+	left: 735px;
+	a {
+		@include border-box;
+		font-size: 10px;
+		color: darken(white, 8%);
+		text-decoration: none;
+		padding: 2px;
+	}
+	input {
+		@include border-box;
+		font-size: 10px;
+		color: darken(white, 8%);
+		text-decoration: none;
+		padding: 2px;
+	}
+}
+
+#post {
+	@extend .comment;
+}
+
+#post-user {
+	@extend .comment-user;
+}
+
+#post-content{
+	@extend .comment-content;
+}
+
+#post-footer {
+	@extend .comment-footer;
+}
+
+#comments-view {
+	@extend #forums;
+}
+
+#edit-post {
+	margin: 16px 0 0 250px;
+}
+
+#edit-comment {
+	@extend #edit-post;
+}
+
+#create-post{
+	@extend #edit-post;
+}
+
+.topic {
+	margin-bottom: 20px;
+	input{
+		@include border-box;
+		width: 600px;
+	}
+}
+
+.content {
+	margin-bottom: 20px;
+	textarea{
+		@include border-box;
+		height: 350px;
+		width: 600px;
+	}
+}
+
+input[type='submit'] {
+	@include border-box;
+	color: $white;
+}
+
+#new-comment {
+	@extend #create-post;
+	@extend .content;
+}

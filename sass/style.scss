@@ -1,0 +1,28 @@
+@import 'main';
+@import 'sidebar';
+@import 'forum';
+
+/* Video Page Styling */
+
+#ytplayer {
+	position: absolute;
+	margin-left: 300px;
+	iframe {
+		display: block;
+		padding-top: 40px;
+	}
+}
+
+/* etc */
+
+#path {
+	background-image: url("../images/paths.png");
+	background-repeat: no-repeat;
+	width: 1600px;
+	height: 1208px;
+	margin-left: 264px;
+}
+
+#eduzone {
+	margin-left: 450px;
+}

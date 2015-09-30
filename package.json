@@ -19,7 +19,18 @@
     "marked": "^0.3.3",
     "method-override": "^2.3.4",
     "morgan": "^1.6.1",
+    "node-sass-middleware": "^0.9.6",
     "path": "^0.11.14",
-    "pg": "^4.4.0"
-  }
+    "pg": "^4.4.0",
+    "request-promise": "0.4.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nishadprinja/clarifyconcepts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nishadprinja/clarifyconcepts/issues"
+  },
+  "homepage": "https://github.com/nishadprinja/clarifyconcepts#readme"
 }

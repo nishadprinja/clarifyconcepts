@@ -1,4 +1,6 @@
 var db = require('../db.js');
+var pg = require('pg');
+var dbUrl = "pg://localhost/clarifyconceptsforum_db";
 
 module.exports.Forum = {
 
@@ -13,7 +15,7 @@ module.exports.Forum = {
 			db.findRelations('posts', 'forum_id', id, function (data) {
 				var stuff = {
 					forumStuff: forums[0],
-					allData: data
+					allPostData: data
 				};
 			callback(stuff);
 			});
@@ -21,13 +23,19 @@ module.exports.Forum = {
 	},
 
 	displayComments: function (id, callback) {
-		db.find('posts', id, function (data) {
-			db.findRelations('comments', 'post_id', id, function (content) {
-				var commentsView = {
-					post: data[0],
-					comment: content
-				};
-				callback(commentsView);
+
+		pg.connect(dbUrl, function (err, client, done) {
+			db.find('posts', id, function (data) {
+				client.query('SELECT u.id, u.username, u.password, u.profile_img, u.city, u.region, u.country, p.id AS post_id, p.topic, p.content FROM users u LEFT JOIN posts p ON p.user_id = u.id WHERE p.id=' + id, function (err, result) {
+					client.query('SELECT u.id, u.username, u.password, u.profile_img, u.city, u.region, u.country, c.id AS comment_id, c.content, c.post_id FROM users u LEFT JOIN comments c ON c.user_id = u.id WHERE post_id=' + id, function (errr, resultt) {	
+						var entireView = {
+						post: data[0],
+						comment: resultt.rows,
+						user: result.rows[0]
+						};
+						callback(entireView);
+					});	
+				});
 			});
 		});
 	},

@@ -1,6 +1,6 @@
 var pg = require('pg');
-// var dbUrl = "pg://localhost/clarifyconceptsforum_db";
-var dbUrl = process.env.DATABASE_URL
+var dbUrl = "pg://localhost/clarifyconceptsforum_db";
+// var dbUrl = process.env.DATABASE_URL
 
 module.exports = {
 	end: function () {
@@ -76,5 +76,13 @@ module.exports = {
 			});
 		});
 		this.end();
+	},
+	getUser: function (string, cb) {
+		pg.connect(dbUrl, function (err, client, done) {
+			client.query('SELECT * FROM users WHERE username=($1)', [string], function (err, result) {
+				done();
+				cb(result.rows[0]);
+			});
+		});
 	}
 };

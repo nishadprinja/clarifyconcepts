@@ -1,15 +1,48 @@
-<form action="/forum/{{forums}}" method="POST">
+<section class="container">
+  <nav class="vnav">
+    <ul class="vnav-menu">
+      <li>
+        <a href="/edu-zone" class="vnav-item">
+          Edu-Zone Tutorials
+        </a>
+      </li>
+      <li>
+        <a href="/forum" class="vnav-item">
+          Forum
+        </a>
+      </li>
+      <li>
+        <a href="/careers" class="vnav-item">
+          The Career Shop
+        </a>
+      </li>
+    </ul>
+  </nav>
+</section>
 
-	<input type="hidden" name="forum_id" value="{{forums}}">
+<div id="create-post">
 
-	<label for="topic">
-		<input type="text" name="topic" placeholder="enter topic">
-	</label>
+	<h3>Create New Post</h3>
 
-	<label for="content">
-		<input type="text" name="content">
-	</label>
+	<form action="/forum/{{forums}}" method="POST">
+
+		<input type="hidden" name="forum_id" value="{{forums}}">
+		<input type="hidden" name="user_id" value="{{user}}">
+		
+		<div class="topic">
+			<label for="topic">
+				<input type="text" name="topic" placeholder="enter topic..">
+			</label>
+		</div>
+		
+		<div class="content">
+			<label for="content">
+				<textarea type="text" name="content"></textarea>
+			</label>
+		</div>
+		
+		<input type="submit" value="Submit">
+		
+	</form>
 	
-	<input type="submit" value="SUBMIT">
-	
-</form>
+</div>

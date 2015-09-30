@@ -9,6 +9,7 @@ module.exports.controller = function (app) {
 	app.get('/signup', function (req, res) {
 		res.render('../views/signup-signin/new_user');
 	});
+
 	//SIGN UP POST
 	app.post('/signup', function (req, res) {
 		bcrypt.hash(req.body.password, 10, function (err, hash) {
@@ -21,9 +22,9 @@ module.exports.controller = function (app) {
 				country: req.body.country
 			};
 			User.create(newUser, function (user) {
-				console.log(req.session)
+				console.log(req.session);
 				req.session.currentUser = user.id;
-				res.redirect('/')
+				res.redirect('/');
 			});
 		});
 	});
@@ -32,25 +33,30 @@ module.exports.controller = function (app) {
 	app.get('/login', function (req, res) {
 		res.render('../views/signup-signin/login');
 	});
+
 	//LOGIN POST
 	app.post('/login', function (req, res) {
 		User.find(req.body.username, function (user) {
 			bcrypt.compare(req.body.password, user.password, function (err, result) {
-				if(result) {
+				if (result) {
+					var sessionId = {
+						session: req.session.currentUser
+					};
 					req.session.currentUser = user.id;
-					res.redirect('/');
-				}  else{
+					res.render('home', sessionId);
+				} else {
 					res.redirect('/login');
 				}
-			})
+			});
 		});
 	});
 
 	//LOGOUT
 	app.delete('/logout', function (req, res) {
+		var sessionId = {
+			session: req.session.currentUser
+		};
 		req.session.currentUser = null;
-		res.redirect('/')
+		res.render('home', sessionId);
 	});
-
-
 }

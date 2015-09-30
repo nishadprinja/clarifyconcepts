@@ -2,17 +2,20 @@
 var Forum = require('../models/forum.js').Forum;
 
 module.exports.controller = function (app) {
+
 //main route
-	app.get('/', function (req, res) {
+
+	app.get('/forum', function (req, res) {
 		Forum.displayForums(function(forums){
 			var data = {
 				forums: forums
 			};
-			res.render('home', data);
+			res.render('../views/forum/forums', data);
 		});
 	});
 
 //Index route
+
 	app.get('/forum/:id', function (req, res) {
 		Forum.displayPosts(req.params.id, function (posts) {
 			res.render('../views/forum/forum', posts);
@@ -20,16 +23,19 @@ module.exports.controller = function (app) {
 	});
 
 //New route
+
 	app.get('/forum/:id/new', function (req, res) {
 		var data = {
-			forums: req.params.id
+			forums: req.params.id,
+			user: req.session.currentUser
 		};
 		res.render('../views/forum/create_post', data);
 	});
 
 	app.get('/forum/post/comment/:id/new', function (req, res) {
 		var data = {
-			post: req.params.id
+			post: req.params.id,
+			user: req.session.currentUser
 		};
 		res.render('../views/forum/create_comment', data);
 	});
@@ -47,6 +53,7 @@ module.exports.controller = function (app) {
 	});
 
 //Show route
+
 	app.get('/forum/post/:id', function (req, res) {
 		Forum.displayComments(req.params.id, function (info) {
 			res.render('../views/forum/comments', info);
@@ -94,5 +101,6 @@ module.exports.controller = function (app) {
 			res.redirect('/forum/post/' + info.post_id);
 		});
 	});
+
 }
 

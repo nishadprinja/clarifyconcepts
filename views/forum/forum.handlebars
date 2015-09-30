@@ -1,9 +1,45 @@
-<a href="/forum/{{forumStuff.id}}/new">Create New Topic</a>
+<section class="container">
+  <nav class="vnav">
+    <ul class="vnav-menu">
+      <li>
+        <a href="/edu-zone" class="vnav-item">
+          Edu-Zone Tutorials
+        </a>
+      </li>
+      <li>
+        <a href="/forum" class="vnav-item">
+          Forum
+        </a>
+      </li>
+      <li>
+        <a href="/careers" class="vnav-item">
+          The Career Shop
+        </a>
+      </li>
+    </ul>
+  </nav>
+</section>
 
-<br><br>
+<div id="posts">
+  
+  <div id="new-post">
+    <span>
+    	<a href="/forum/{{forumStuff.id}}/new">Create New Topic</a>
+    </span>
+  </div>
 
-{{#each allData}}
+    <br><br><br>
+  
+	{{#each allPostData}}
+  
+    <div class="post-box">
+      <span>
+		    <a href="/forum/post/{{id}}">{{topic}}</a>
+      </span>
+    </div>
 
-<a href="/forum/post/{{id}}">{{topic}}</a> | {{num_comments}} | {{location}}<br>
+    <br><br>
 
-{{/each}}
+	{{/each}}
+	
+</div>

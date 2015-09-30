@@ -1,6 +1,38 @@
-<form action="/forum/post/edit/{{id}}" method="POST">
-	<input type="hidden" name="_method" value="PUT">
-	<input type="text" name="topic" value="{{topic}}">
-	<input type="text" name="content" value="{{content}}">
-	<input type="submit" value="SUBMIT">
-</form>
+<section class="container">
+  <nav class="vnav">
+    <ul class="vnav-menu">
+      <li>
+        <a href="/edu-zone" class="vnav-item">
+          Edu-Zone Tutorials
+        </a>
+      </li>
+      <li>
+        <a href="/forum" class="vnav-item">
+          Forum
+        </a>
+      </li>
+      <li>
+        <a href="/careers" class="vnav-item">
+          The Career Shop
+        </a>
+      </li>
+    </ul>
+  </nav>
+</section>
+
+<div id="edit-post">
+  <h3>Edit Post</h3>
+	<form action="/forum/post/edit/{{id}}" method="POST">
+		<input type="hidden" name="_method" value="PUT">
+
+    <div class="topic">
+		  <input type="text" name="topic" value="{{topic}}">
+    </div>
+    
+    <div class="content">
+		  <textarea type="text" name="content">{{content}}</textarea>
+    </div>
+
+		<input type="submit" value="Submit">
+	</form>
+</div>

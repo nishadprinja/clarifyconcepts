@@ -1,0 +1,62 @@
+/* Main Elements */
+
+html, body {
+	background-color: cornflowerblue;
+	font-family: 'Ubuntu';
+	margin: 0;
+	overflow-x: hidden;
+}
+
+@mixin border-box {
+	border: 1px solid darkblue;
+	background: rgba(lighten(darkblue, 40%), 0.6);
+}
+
+#top-bar {
+	position: relative;
+	background-color: darkblue;
+	width: 100%;
+	height: auto;
+}
+
+#login-form {
+	margin: 16px 0 0 250px;
+	h3 {
+		margin-bottom: 35px;
+	}
+}
+
+#login-box {
+	input{
+		@include border-box;
+		width: 160px;
+	}
+}
+
+#signup {
+	@extend #login-form;
+}
+
+#signup-content {
+	@extend #login-box;
+}
+
+#signin_up {
+	display: inline-block;
+	float: top right;
+	padding-left: 38px;
+	padding-top: 15px;
+	padding-bottom: 20px;
+	a {
+		color: darkblue;
+	}
+	button {
+		@include border-box;
+		color: darken(white, 10%);
+		font-size: 13px;
+	}
+}
+
+#intro {
+	margin: 180px 0 0 440px;
+}

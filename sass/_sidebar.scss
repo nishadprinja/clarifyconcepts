@@ -1,0 +1,90 @@
+@import './shared/mixins';
+/*
+ * Copyright (c) 2012-2013 Thibaut Courouble
+ * http://www.cssflow.com
+ *
+ * Licensed under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+
+.container {
+  position: absolute;
+  width: 215px;
+
+  .vnav { margin: 0 auto 0 0.5px; }
+}
+
+.vnav {
+  overflow: hidden;
+  border: 1px solid darkblue;
+  background: cornflowerblue;
+  @include box-shadow(0 1px 2px rgba(black, .4));
+
+  a {
+    display: block;
+    line-height: 34px;
+    text-decoration: none;
+  }
+
+  li:last-child {
+    .vnav-item { border-bottom-color: lighten(darkblue, 35%); }
+    .vnav-subnav { border-bottom-color: white; }
+  }
+}
+
+.vnav-menu {
+  padding: 0px;
+  margin: 0px;
+}
+
+.vnav-item {
+  position: relative;
+  padding: 0 12px 0 37px;
+  font-size: 13px;
+  color: white;
+  text-shadow: 0 1px rgba(black, .35);
+  background: #505968;
+  border-top: 1px solid lighten(darkblue, 40%);
+  border-bottom: 1px solid darkblue;
+  @include linear-gradient(top, darken(cornflowerblue, 3%), darken(cornflowerblue, 23%));
+  @include transition(opacity .15s);
+
+  &:hover { opacity: .95; }
+
+  // .active &, &:active {
+  //   opacity: 1;
+  //   background: #259bdb;
+  //   border-top-color: #6ad2ef;
+  //   border-bottom-color: #1c638f;
+  //   @include box-shadow(0 1px #bbb, 0 2px #e9ebe8);
+  //   @include linear-gradient(top, #44c5ec, #259bdb);
+  // }
+}
+
+.vnav-subnav {
+  display: none;
+  // border-bottom: 1px solid #404348;
+  margin: 0;
+  padding: 0;
+
+  .active & { display: block; }
+ 
+  a {
+    padding: 0 12px 0 16px;
+    font-size: 12px;
+    color: white;
+    padding-left: 45px;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      width: 0;
+      height: 0;
+      margin-right: 8px;
+      border: 4px outset transparent;
+      border-left: 4px solid #bbb;
+    }
+
+    &:hover { background: saturate(darken(lightblue, 5%), 35%); }
+  }
+}

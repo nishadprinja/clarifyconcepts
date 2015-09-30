@@ -1,11 +1,40 @@
-<form action="/forum/post/comment/{{post}}" method="POST">
+<section class="container">
+  <nav class="vnav">
+    <ul class="vnav-menu">
+      <li>
+        <a href="/edu-zone" class="vnav-item">
+          Edu-Zone Tutorials
+        </a>
+      </li>
+      <li>
+        <a href="/forum" class="vnav-item">
+          Forum
+        </a>
+      </li>
+      <li>
+        <a href="/careers" class="vnav-item">
+          The Career Shop
+        </a>
+      </li>
+    </ul>
+  </nav>
+</section>
 
-	<input type="hidden" name="post_id" value="{{post}}">
+<div id="new-comment">
+
+  <h3>New Comment</h3>
+
+	<form action="/forum/post/comment/{{post}}" method="POST">
+
+		<input type="hidden" name="user_id" value="{{user}}">
+		<input type="hidden" name="post_id" value="{{post}}">
+		
+		<label for="content">
+			<textarea type="text" name="content"></textarea>
+		</label><br><br>
+
+		<input type="submit" value="Submit">
+
+	</form>
 	
-	<label for="content">
-		<input type="text" name="content">
-	</label>
-
-	<input type="submit" value="SUBMIT">
-
-</form>
+</div>

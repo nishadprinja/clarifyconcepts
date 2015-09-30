@@ -5,18 +5,39 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Clarify Concepts Forum</title>
-		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
 		<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="../../../../css/normalize.css">
 		<link rel="stylesheet" type="text/css" href="../../../../css/style.css">
 	</head>
 
 	<body>
+	
+		<div id="top-bar">		
+			<a href="/"><img src="../../../../images/cclogo.png"></img></a>
+		</div>
+		
+		<div id="signin_up">
+			<a href="/signup"><button>Sign Up</button></a>
+			<a href="/login"><button>Login</button></a>
+		</div>
+			
+		<script>
+		// if({{session}}) {
+		// 	console.log('hello');
+		// 	var logoutDiv = $('<div>').attr('id', 'signin_up').appendTo('body');
+		// 	var form = $('<form action="/logout" method="POST">').append('<input type="hidden" name="_method" value="DELETE">').append('<input type="submit" value="Logout">');
+		// 	logoutDiv.append(form);
+		// } else {
+		// 	console.log('goodbye');
+		// 	var loginSignupDiv = $('<div>').attr('id', 'signin_up').appendTo('body');
+		// 	var signUpButton = $('<a href="/signup">').append('<button>').innerText('Sign Up');
+		// 	loginSignupDiv.append(signUpButton);
+		// } 
+		</script>
 
-	<div id="logo"></div>
-	
-		{{{body}}}
-	
+			{{{body}}}
+
 	</body>
 
 </html>

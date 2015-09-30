@@ -1,0 +1,35 @@
+<section class="container">
+  <nav class="vnav">
+    <ul class="vnav-menu">
+      <li>
+        <a href="/edu-zone" class="vnav-item">
+          Edu-Zone Tutorials
+        </a>
+      </li>
+      <li>
+        <a href="/forum" class="vnav-item">
+          Forum
+        </a>
+      </li>
+      <li>
+        <a href="/careers" class="vnav-item">
+          The Career Shop
+        </a>
+      </li>
+    </ul>
+  </nav>
+</section>
+
+<div id="forums">
+	{{#each forums}}
+
+		<div class="subject">
+      <span>
+        <h3><a href="/forum/{{id}}">{{forum}}</a></h3>
+    		{{description}}<br><br>
+      </span>
+    </div>
+    <br>
+
+	{{/each}}
+</div>
