@@ -1,6 +1,7 @@
 var db = require('../db.js');
 var pg = require('pg');
-var dbUrl = "pg://localhost/clarifyconceptsforum_db";
+// var dbUrl = "pg://localhost/clarifyconceptsforum_db";
+var dbUrl = process.env.DATABASE_URL;
 
 module.exports.Forum = {
 
