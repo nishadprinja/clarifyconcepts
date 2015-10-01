@@ -5,6 +5,6 @@ INSERT INTO users (username, password, profile_img) VALUES ('Mew', 'swift', 'htt
 INSERT INTO users (username, password, profile_img) VALUES ('Lapras', 'surf', 'http://cdn.bulbagarden.net/upload/thumb/a/ab/131Lapras.png/250px-131Lapras.png') RETURNING id AS id;
 INSERT INTO users (username, password, profile_img) VALUES ('Bulbasaur', 'vinewhip', 'http://img3.wikia.nocookie.net/__cb20140903033555/pokemon/images/e/ea/001Bulbasaur_AG_anime.png') RETURNING id AS id;
 
-INSERT INTO forums (forum, description) VALUES ('Biology', 'A forum to discuss Biology');
-INSERT INTO forums (forum, description) VALUES ('Chemistry', 'A forum to discuss Chemistry');
-INSERT INTO forums (forum, description) VALUES ('Physics', 'A forum to discuss Physics');
+INSERT INTO forums (forum, description) VALUES ('Biology', 'A forum to discuss Biology') RETURNING id AS id;
+INSERT INTO forums (forum, description) VALUES ('Chemistry', 'A forum to discuss Chemistry') RETURNING id AS id;
+INSERT INTO forums (forum, description) VALUES ('Physics', 'A forum to discuss Physics') RETURNING id AS id;
