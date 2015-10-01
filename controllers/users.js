@@ -39,11 +39,12 @@ module.exports.controller = function (app) {
 		User.find(req.body.username, function (user) {
 			bcrypt.compare(req.body.password, user.password, function (err, result) {
 				if (result) {
-					var sessionId = {
-						session: req.session.currentUser
-					};
+					// var sessionId = {
+					// 	session: req.session.currentUser
+					// };
 					req.session.currentUser = user.id;
-					res.render('home', sessionId);
+					// res.render('home', sessionId);
+					res.redirect('/');
 				} else {
 					res.redirect('/login');
 				}
@@ -53,10 +54,11 @@ module.exports.controller = function (app) {
 
 	//LOGOUT
 	app.delete('/logout', function (req, res) {
-		var sessionId = {
-			session: req.session.currentUser
-		};
+		// var sessionId = {
+		// 	session: req.session.currentUser
+		// };
 		req.session.currentUser = null;
-		res.render('home', sessionId);
+		// res.render('home', sessionId);
+		res.redirect('/');
 	});
 }
